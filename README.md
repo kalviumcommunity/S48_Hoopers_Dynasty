@@ -1,6 +1,8 @@
 # S48_Hoopers_Dynasty
 This is your first repository
 
+**Deployed Link - https://hoopers-dynasty.onrender.com/ping**
+
 Hoopers Dynasty
 
 Idea Description: This web page will serve as a tribute to the greatest basketball players in NBA history, showcasing their remarkable achievements and contributions to the sport. Users will be able to explore profiles of players, accompanied by images and details of their careers. Basketball Legends will provide an immersive experience for basketball enthusiasts of all ages.

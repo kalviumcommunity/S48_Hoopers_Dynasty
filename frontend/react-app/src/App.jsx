@@ -1,20 +1,18 @@
-import React from 'react';
-import './App.css'; 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HoopersDynasty from "./Components/landingpage";
+import Login from "./Components/login";
+import Form from "./Components/signup"; // Add this line
 
-function HoopersDynasty() {
+function App() {
   return (
-    <div>
-      <header>
-        <h1>Welcome to Hoopers Dynasty</h1>
-        <nav>
-          <ul>
-            <li><a href="#login" className="button">Login</a></li>
-            <li><a href="#signup" className="button">Sign Up</a></li>
-          </ul>
-        </nav>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HoopersDynasty />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Form />} /> {/* Add this line */}
+      </Routes>
+    </Router>
   );
 }
 
-export default HoopersDynasty;
+export default App;

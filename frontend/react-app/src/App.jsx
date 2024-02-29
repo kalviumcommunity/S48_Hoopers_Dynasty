@@ -4,6 +4,8 @@ import Login from "./Components/login";
 import Form from "./Components/signup"; 
 import UserList from "./Components/userdata";
 
+
+
 function App() {
   return (
     <Router>
@@ -12,6 +14,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Form />} /> {/* Add this line */}
         <Route path="/UserList" element={<UserList />} />
+
       </Routes>
     </Router>
   );

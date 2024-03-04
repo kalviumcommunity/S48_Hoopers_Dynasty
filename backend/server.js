@@ -18,14 +18,27 @@ mongoose.connect("mongodb+srv://Madan:madan%402430@cluster0.vawcexm.mongodb.net/
 app.use('/', routes);
 
 // Additional route
-app.get('/getuser', (req, res) => {
-  UserModel.find()
-    .then(players => res.json(players))
-    .catch(err => console.log(err));
-});
+app.get('/', (req, res) => {
+  UserModel.find({})
+  .then(users => res.json(users))
+  .catch(err => res.json(err))
+})
+
+app.get('/getUser/:id', (req, res)=>{
+  const id = req.params.id;
+  UserModel.findById({_id:id})
+  .then(users => res.json(users))
+  .catch(err => res.json(err))
+})
+
+app.post("/createUser",(req, res)=>{
+  UserModel.create(req.body)
+  .then(users => res.json(users))
+  .catch(err => res.json(err))
+})
 
 // Default 404 route
-// app.use((req, res) => res.status(404).send('Not found'));
+app.use((req, res) => res.status(404).send('Not found'));
 
 // Start server
 app.listen(PORT, () => {

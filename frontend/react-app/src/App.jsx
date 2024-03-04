@@ -3,6 +3,7 @@ import HoopersDynasty from "./Components/landingpage";
 import Login from "./Components/login";
 import Form from "./Components/signup"; 
 import UserList from "./Components/userdata";
+import CreateUser from "./Components/CreateUser";
 
 
 
@@ -14,7 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Form />} /> {/* Add this line */}
         <Route path="/UserList" element={<UserList />} />
-
+        <Route path="/create" element={<CreateUser/>}/>
       </Routes>
     </Router>
   );

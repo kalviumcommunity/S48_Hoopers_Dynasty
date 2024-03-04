@@ -1,27 +1,22 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import axios from 'axios';
-import './userdata.css'
-
+import { Link } from "react-router-dom";
+import "./userdata.css";
+ 
 export default function UserList() {
-  const [users, setUsers] = useState([]);
-
+  const [users, setUsers] = useState([])
+  
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3001/getuser");
-        console.log("Response data:", response.data);
-        setUsers(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+    axios.get('http://localhost:3001')
+    .then(result => setUsers(result.data))
+    .catch(err => console.log(err))
+  },[])
 
-    fetchData();
-  }, []);
 
   return (
     <div className="w-100 vh-100 d-flex justify-content-center align-items-center text-align-center">
       <div className="w-50">
+      <Link to="/create" className='btn btn-success' > Add +</Link>
         <table className="table">
           <thead>
             <tr>

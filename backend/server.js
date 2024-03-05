@@ -31,6 +31,29 @@ app.get('/getUser/:id', (req, res)=>{
   .catch(err => res.json(err))
 })
 
+
+app.put('/updateUser/:id', (req, res) => {
+    const id = req.params.id;
+    UserModel.findByIdAndUpdate(id, {
+      fullName: req.body.fullName,
+      imageURL: req.body.imageURL,
+        team: req.body.team,
+        statistics: req.body.statistics,
+        achievement: req.body.achievement
+    }, { new: true })
+    .then(updatedUser => res.json(updatedUser))
+    .catch(err => res.status(500).json(err));
+  });
+
+app.delete('/deleteUser/:id',  (req,res) =>{
+  const id= req.params.id;
+  UserModel.findByIdAndDelete({ _id : id })
+  .then(res => res.json(res))
+  .catch(err => res.json(err))
+})
+
+
+
 app.post("/createUser",(req, res)=>{
   UserModel.create(req.body)
   .then(users => res.json(users))

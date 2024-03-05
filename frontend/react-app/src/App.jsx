@@ -4,8 +4,7 @@ import Login from "./Components/login";
 import Form from "./Components/signup"; 
 import UserList from "./Components/userdata";
 import CreateUser from "./Components/CreateUser";
-
-
+import UpdateUser from "./Components/UpdateUser";
 
 function App() {
   return (
@@ -15,7 +14,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Form />} /> {/* Add this line */}
         <Route path="/UserList" element={<UserList />} />
-        <Route path="/create" element={<CreateUser/>}/>
+        <Route path="/create" element={<CreateUser />}/>
+        <Route path="/update/:id" element={<UpdateUser />}/>
       </Routes>
     </Router>
   );

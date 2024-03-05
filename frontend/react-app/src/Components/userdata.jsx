@@ -11,6 +11,14 @@ export default function UserList() {
     .then(result => setUsers(result.data))
     .catch(err => console.log(err))
   },[])
+  
+
+  const handleDelete= (id) =>{
+    axios.delete('http://localhost:3001/deleteUser/'+id)
+    .then(res => {console.log(res)
+      window.location.reload()}) 
+      .catch(errr => console.log(errr))
+    }
 
 
   return (
@@ -35,6 +43,11 @@ export default function UserList() {
                 <td>{data.team}</td>
                 <td>{data.statistics}</td>
                 <td>{data.achievement}</td>
+                <td>
+                  <Link to={`/update/${data._id}`} className='btn btn-success' > Update</Link>
+                  <button className='btn btn-danger'
+                  onClick={(e)=>handleDelete(data._id)}> Delete</button> 
+                  </td>
               </tr>
             ))}
           </tbody>

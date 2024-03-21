@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
 import axios from "axios";
 
 function UpdateUser() {
@@ -13,7 +12,7 @@ function UpdateUser() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/getUser/${id}`)
+        axios.get(`http://localhost:3000/getPlayers/${id}`)
             .then(response => {
                 const { fullName, imageURL, team, statistics, achievement } = response.data;
                 setfullName(fullName);
@@ -27,7 +26,7 @@ function UpdateUser() {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3001/updateUser/${id}`, { fullName, imageURL, team, statistics, achievement })
+        axios.put(`http://localhost:3000/updatePlayers/${id}`, { fullName, imageURL, team, statistics, achievement })
             .then(response => {
                 console.log(response);
                 navigate('/userList');

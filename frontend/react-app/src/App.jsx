@@ -5,6 +5,7 @@ import Form from "./Components/signup";
 import UserList from "./Components/userdata";
 import CreateUser from "./Components/CreateUser";
 import UpdateUser from "./Components/UpdateUser";
+import HomePage from "./Components/homePage";
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
       <Routes>
         <Route path="/" element={<HoopersDynasty />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Form />} /> {/* Add this line */}
+        <Route path="/signup" element={<Form />} /> 
         <Route path="/UserList" element={<UserList />} />
         <Route path="/create" element={<CreateUser />}/>
         <Route path="/update/:id" element={<UpdateUser />}/>
+        <Route path="/home" element={<HomePage />}/>
       </Routes>
     </Router>
   );

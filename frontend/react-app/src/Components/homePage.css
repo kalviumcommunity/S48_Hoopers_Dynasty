@@ -1,0 +1,75 @@
+.home-page {
+  text-align: center;
+  margin-top: 50px;
+  position: relative; /* Added for positioning */
+}
+
+.home-page-title {
+  font-size: 24px;
+  margin-right: 480px;
+  margin-bottom: 20px;
+}
+
+.player-image {
+  cursor: pointer;
+}
+
+.player-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 2%;
+  border: 3px solid #ffffff;
+}
+
+.player-details {
+  margin-top: 20px;
+  border: 1px solid #ffffff;
+  padding: 20px;
+  background-color: rgb(102, 114, 124);
+}
+
+.player-details-name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.player-details-team {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.player-details-statistics {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.player-details-statistics-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.player-details-statistics-list li {
+  margin-bottom: 5px;
+}
+
+.achievements-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.achievements-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.player-details-achievement {
+  margin-bottom: 5px;
+}
+
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

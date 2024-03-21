@@ -2,29 +2,32 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./userdata.css";
- 
+
 export default function UserList() {
-  const [users, setUsers] = useState([])
-  
+  const [users, setUsers] = useState([]);
+
   useEffect(() => {
-    axios.get('http://localhost:3001')
-    .then(result => setUsers(result.data))
-    .catch(err => console.log(err))
-  },[])
-  
+    axios.get('http://localhost:3000/getPlayers/')
+      .then(result => {
+        console.log(result.data);
+        setUsers(result.data)
+      })
+      .catch(err => console.error("Error fetching data:", err));
+  }, []);
 
-  const handleDelete= (id) =>{
-    axios.delete('http://localhost:3001/deleteUser/'+id)
-    .then(res => {console.log(res)
-      window.location.reload()}) 
-      .catch(errr => console.log(errr))
-    }
-
+  const handleDelete = (id) => {
+    axios.delete('http://localhost:3000/deletePlayer/' + id)
+      .then(res => {
+        window.location.reload();
+        console.log(res);
+      })
+      .catch(errr => console.log(errr));
+  };
 
   return (
     <div className="w-100 vh-100 d-flex justify-content-center align-items-center text-align-center">
       <div className="w-50">
-      <Link to="/create" className='btn btn-success' > Add +</Link>
+        <Link to="/create" className='btn btn-success'> Add +</Link>
         <table className="table">
           <thead>
             <tr>
@@ -44,10 +47,10 @@ export default function UserList() {
                 <td>{data.statistics}</td>
                 <td>{data.achievement}</td>
                 <td>
-                  <Link to={`/update/${data._id}`} className='btn btn-success' > Update</Link>
+                  <Link to={`/update/${data._id}`} className='btn btn-success'> Update</Link>
                   <button className='btn btn-danger'
-                  onClick={(e)=>handleDelete(data._id)}> Delete</button> 
-                  </td>
+                    onClick={(e) => handleDelete(data._id)}> Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -56,4 +59,3 @@ export default function UserList() {
     </div>
   );
 }
-

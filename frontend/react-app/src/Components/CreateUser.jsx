@@ -13,9 +13,9 @@ function CreateUser(){
 
     const Submit = (e) =>{
         e.preventDefault();
-        axios.post("http://localhost:3001/createUser", {fullName, imageURL, team, statistics, achievement })
+        axios.post("http://localhost:3000/createPlayer", {fullName, imageURL, team, statistics, achievement })
         .then(result => {
-            console.log(result)
+            console.log(result)+
             navigate('/UserList')
         })
         .catch(err => console.log(err))
@@ -33,7 +33,7 @@ function CreateUser(){
                     </div>
                     <div className="mb-2">
                         <label htmlFor="">imageURL </label>
-                        <input type="text" placeholder="Enter imageURL" className="form-control"
+                        <input type="url" placeholder="Enter imageURL" className="form-control"
                         onChange={(e)=>setimageURL(e.target.value)}/>
                     </div>
                     <div className="mb-2">

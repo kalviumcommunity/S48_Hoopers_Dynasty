@@ -28,6 +28,12 @@ function Login() {
         navigate("/home"); // Redirect to dashboard on successful login
       }
     } catch (error) {
+      alert( "Invalid username or password" )
+      console.log(error.response)
+      if(error.response.status==400)
+      {
+        alert(error.response.data)
+      }
       setError(error.response.data.message); // Assuming the server sends error message in a JSON object
     }
   };

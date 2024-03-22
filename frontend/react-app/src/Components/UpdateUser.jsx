@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./UpdateUser.css"
 
 function UpdateUser() {
     const { id } = useParams();
@@ -64,7 +65,7 @@ function UpdateUser() {
                         <input type="text" placeholder="Enter achievement" className="form-control"
                             value={achievement} onChange={(e) => setachievement(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-success">Update</button>
+                    <button type="submit" className='btn-success'>Update</button>
                 </form>
             </div>
         </div>

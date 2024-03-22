@@ -6,7 +6,7 @@ import UserList from "./Components/userdata";
 import CreateUser from "./Components/CreateUser";
 import UpdateUser from "./Components/UpdateUser";
 import HomePage from "./Components/homePage";
-
+import './Components/UpdateUser.css'
 function App() {
   return (
     <Router>

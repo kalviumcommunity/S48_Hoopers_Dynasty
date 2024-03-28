@@ -25,6 +25,8 @@ const HomePage = () => {
 
   const handleLogout = () => {
     navigate("/")
+    document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+
     console.log("Logged out");
   };
 
@@ -38,6 +40,7 @@ const HomePage = () => {
         </div>
         {showPlayerDetails && (
           <div className="player-details">
+            <button className="edit-button">Edit</button>
             <h2 className="player-details-name">{player.fullName}</h2>
             <p className="player-details-team">Team: {player.team}</p>
             <p className="player-details-statistics">Statistics:</p>

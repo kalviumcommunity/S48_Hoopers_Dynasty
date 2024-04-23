@@ -28,14 +28,15 @@ function Login() {
       const response = await axios.post("http://localhost:3000/login", {
         username: field.userName,
         email: field.email,
-        password: field.password
+        password: field.password,
       });
 
       if (response.status === 200) {
         setValidation(true);
         setSubmit(true);
         setCookie('username',field.userName)
-        navigate("/home"); // Redirect to dashboard on successful login
+        setCookie('accesstoken',response.data.accessToken)
+        navigate("/home"); 
       }
     } catch (error) {
       alert( "Invalid username or password" )
@@ -44,7 +45,7 @@ function Login() {
       {
         alert(error.response.data)
       }
-      setError(error.response.data.message); // Assuming the server sends error message in a JSON object
+      setError(error.response.data.message); 
     }
   };
   const validateEmail = (email) => {

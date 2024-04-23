@@ -88,7 +88,7 @@ app.post('/login', async (req, res) => {
 
 app.post("/createPlayer", async (req, res) => {
   try {
-    const { fullName, imageURL, team, statistics, achievement } = req.body;
+    const { fullName, imageURL, team, statistics, achievement,createdby } = req.body;
 
     // Validate request body using Joi
     const { error } = PlayersValidation.validate(req.body);
@@ -111,6 +111,7 @@ app.post("/createPlayer", async (req, res) => {
       team,
       statistics,
       achievement,
+      createdby
     });
     await newPlayer.save();
 

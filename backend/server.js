@@ -2,9 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { PlayersModel, PlayersValidation } = require('./models/players');
-const { UserModel, UserValidation } = require('./models/user'); // Ensure correct path for UserValidation
-// const routes = require('./routes');
-// app.use('/', routes);
+const { UserModel, UserValidation } = require('./models/user'); 
+const jwt = require('jsonwebtoken')
 require("dotenv").config();
 
 const app = express();
@@ -72,14 +71,13 @@ app.post('/login', async (req, res) => {
     const { username , email, password } = value;
     const user = await UserModel.findOne({ username });
 
+    const accessToken = jwt.sign({username},process.env.ACCESSTOKEN_SECRET)
+
     if (!user || user.password !== password) {
       return res.status(401).json({ success: false, message: "Invalid username or password" });
     }
 
-    // If user and password are correct, you might want to generate and send a token for authentication
-
-    // For now, just send a success message
-    res.json({ success: true, message: "Login successful" });
+    res.json({ success: true, message: "Login successful",accessToken:accessToken });
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ success: false, message: "An error occurred during login" });
@@ -88,7 +86,7 @@ app.post('/login', async (req, res) => {
 
 app.post("/createPlayer", async (req, res) => {
   try {
-    const { fullName, imageURL, team, statistics, achievement } = req.body;
+    const { fullName, imageURL, team, statistics, achievement,createdby } = req.body;
 
     // Validate request body using Joi
     const { error } = PlayersValidation.validate(req.body);
@@ -111,6 +109,7 @@ app.post("/createPlayer", async (req, res) => {
       team,
       statistics,
       achievement,
+      createdby
     });
     await newPlayer.save();
 

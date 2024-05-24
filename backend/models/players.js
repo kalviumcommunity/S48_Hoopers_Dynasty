@@ -5,7 +5,8 @@ const PlayersSchema = new mongoose.Schema({
     imageURL: String,
     team: String,
     statistics: String,
-    achievement: String
+    achievement: String,
+    createdby:String
 })
 
 const PlayersModel = mongoose.model("players", PlayersSchema);
@@ -15,7 +16,9 @@ const PlayersValidation = Joi.object({
     imageURL: Joi.string().required(),
     team: Joi.string().required(),
     statistics: Joi.string().required(),
-    achievement: Joi.string().required() 
+    achievement: Joi.string().required(),
+    createdby: Joi.string().required()
+
     });
 
 module.exports = {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 function Login() {
   const navigate = useNavigate()
   const [field, setField] = useState({
@@ -9,6 +10,14 @@ function Login() {
     email:"",
     password:"" 
   });
+
+  function setCookie(name, value, daysToExpire) {
+    let date = new Date();
+    date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+    document.cookie =
+      name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+  }
+
   const [submitted, setSubmit] = useState(false);
   const [validate, setValidation] = useState(false);
   const [error, setError] = useState("");
@@ -19,13 +28,15 @@ function Login() {
       const response = await axios.post("http://localhost:3000/login", {
         username: field.userName,
         email: field.email,
-        password: field.password
+        password: field.password,
       });
 
       if (response.status === 200) {
         setValidation(true);
         setSubmit(true);
-        navigate("/home"); // Redirect to dashboard on successful login
+        setCookie('username',field.userName)
+        setCookie('accesstoken',response.data.accessToken)
+        navigate("/home"); 
       }
     } catch (error) {
       alert( "Invalid username or password" )
@@ -34,7 +45,7 @@ function Login() {
       {
         alert(error.response.data)
       }
-      setError(error.response.data.message); // Assuming the server sends error message in a JSON object
+      setError(error.response.data.message); 
     }
   };
   const validateEmail = (email) => {

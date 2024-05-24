@@ -4,8 +4,6 @@ const cors = require('cors');
 const { PlayersModel, PlayersValidation } = require('./models/players');
 const { UserModel, UserValidation } = require('./models/user'); 
 const jwt = require('jsonwebtoken')
-// const routes = require('./routes');
-// app.use('/', routes);
 require("dotenv").config();
 
 const app = express();

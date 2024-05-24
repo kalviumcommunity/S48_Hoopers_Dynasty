@@ -10,7 +10,7 @@ let players = [
 // Get all players
 router.get('/players', (req, res) => {
   res.json(players);
-});
+}); 
 
 // Get player by ID
 router.get('/players/:id', (req, res) => {
